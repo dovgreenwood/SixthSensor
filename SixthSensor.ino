@@ -20,7 +20,10 @@ void loop() {
  int duration = pulseIn(echo, HIGH);
  int distance = duration /2 /29.1;
  
- int feedback = distance * (analogRead(pet) / 100 + 1);
+ int feedback = distance * (analogRead(pet) / 100 + 1); //scale of 1 - 11
  
- analogWrite(vMotor, feedback);
+ if(feedback > 255) //lowering to a legitimate analog value
+   feedback = 255;
+ 
+ analogWrite(vMotor, feedback * 0.7); //can only take maximum of 3v
 }
