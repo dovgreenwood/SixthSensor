@@ -25,5 +25,5 @@ void loop() {
  if(feedback > 255) //lowering to a legitimate analog value
    feedback = 255;
  
- analogWrite(vMotor, feedback * 0.7); //can only take maximum of 3v
+ analogWrite(vMotor, (255 - feedback) * 0.7); //can only take maximum of 3v
 }
